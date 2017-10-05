@@ -1,4 +1,7 @@
-console.log(`Nooode...`);
+// Template strings are neat!
+console.log(`Nooode...
+
+`);
 
 // logging to the console process.argv the array containing the command line arguments passed when the Node.js process was launched
 // console.log(process.argv);
@@ -15,9 +18,9 @@ var firstName = grab('--firstName');
 var lastName = grab('--lastName');
 
 if (!firstName || !lastName) {
-	console.log('Please enter your --firstName and your --lastName ');
+    console.log(`Please enter:  --firstName "Your first name"  --lastName "Your last name"`);
 } else {
-	console.log(`Welcome ${firstName}, ${lastName}`);
+	console.log(`Welcome to Node, ${firstName} ${lastName}! `);
 }
 
 
