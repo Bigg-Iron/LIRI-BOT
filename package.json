@@ -1,0 +1,19 @@
+{
+  "name": "liri-bot",
+  "version": "1.0.0",
+  "description": "Language Interpretation and Recognition Interface.",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Bigg-Iron/LIRI-BOT.git"
+  },
+  "author": "LB.",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Bigg-Iron/LIRI-BOT/issues"
+  },
+  "homepage": "https://github.com/Bigg-Iron/LIRI-BOT#readme"
+}
