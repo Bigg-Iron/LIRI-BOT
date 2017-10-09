@@ -3,27 +3,36 @@ console.log(`Nooode...
 
 `);
 
-// logging to the console process.argv the array containing the command line arguments passed when the Node.js process was launched
-// console.log(process.argv);
+// Load the NPM Package inquirer
+var inquirer = require("inquirer");
+
+// Create a "Prompt" with a series of questions.
+inquirer
+  .prompt([
+    // Here we create a basic text prompt.
+    {
+      type: "input",
+      message: "What is your name?",
+      name: "username"
+    },
+    {
+      type: "confirm",
+      message: "Are you sure:",
+      name: "confirm",
+      default: true
+    },
 
 
-function grab(flag) {
-	var index = process.argv.indexOf(flag);
-	return (index === -1) ? null : process.argv[index + 1];
+  ])
 
-}
+  
+  .then(function (inquirerResponse) {
+    // if the inquirerRepsonse confirms, we display the response
+    if (inquirerResponse.confirm) {
+      console.log(`Welcome ${inquirerResponse.username} !`);
+    } else {
+      console.log(`Something broke...`);
 
+    }
 
-var firstName = grab('--firstName');
-var lastName = grab('--lastName');
-
-if (!firstName || !lastName) {
-    console.log(`Please enter:  --firstName "Your first name"  --lastName "Your last name"`);
-} else {
-	console.log(`Welcome to Node, ${firstName} ${lastName}! `);
-}
-
-
-
-
-
+  });
