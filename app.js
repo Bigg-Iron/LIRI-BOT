@@ -25,11 +25,11 @@ inquirer
 
   ])
 
-  
+
   .then(function (inquirerResponse) {
     // if the inquirerRepsonse confirms, we display the response
     if (inquirerResponse.confirm) {
-      console.log(`Welcome ${inquirerResponse.username} !`);
+      console.log(`Welcome ${inquirerResponse.username}!`);
     } else {
       console.log(`Something broke...`);
 
