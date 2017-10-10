@@ -1,6 +1,5 @@
-// Twitter
+// Twitter API
 var Twitter = require('twitter');
-
 
 var twitterKeys = {
     consumer_key: 'MzDadiSllWfoi9f7HJbtL8ZVr',
@@ -10,10 +9,23 @@ var twitterKeys = {
 };
 
 
-module.exports = {
-  twitterKeys: twitterKeys
-  // Spotify keys:
+// Spotify web API
+var SpotifyApi = require('node-spotify-api')
 
+var spotifyKeys = {
+  clientId: '99e04a250d784566a398e0638e5d2770',
+  clientSecret: 'dd9984c666ac4b139cd98c5d9c2bd8f7'
+
+};
+
+
+
+// Export keys
+module.exports = {
+  // Twitter keys
+  twitterKeys: twitterKeys,
+  // Spotify keys:
+  spotifyKeys: spotifyKeys
   // OMDB keys:
 
 };

@@ -2,6 +2,7 @@ var Keys = require("./keys.js");
 var Twitter = require("twitter");
 var Request = require("request");
 var Fs = require("fs");
+var Util = require("util");
 
 
 var twitterClient = new Twitter(Keys.twitterKeys);
@@ -31,8 +32,9 @@ function getTweets() {
 
 
 
+
 if (command === "my-tweets") {
-    console.log(`Getting tweets...`);
+    util.log(`Getting tweets...`);
     getTweets();
     
 } else {
