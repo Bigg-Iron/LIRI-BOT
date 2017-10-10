@@ -6,18 +6,12 @@ var Fs = require("fs");
 
 var twitterClient = new Twitter(Keys.twitterKeys);
 
-
-// print process.argv
-process.argv.forEach((val, index) => {
-    console.log(`${index}: ${val}`);
-  });
-// var command = process.argv[2];
-// var title = process.argv[3];
+var command = process.argv[2];
 
 
 function getTweets() {
   twitterClient.get(
-    'statuses/user_timeline', { screen_name: "stellerzJay", count: 2 },
+    'statuses/user_timeline', { screen_name: "stellerzJay", count: 3 },
     function(error, tweets, response) {
       if (error) {
       	console.log('Something broke...');
@@ -26,7 +20,6 @@ function getTweets() {
       }
 
       for (var i = 0; i < tweets.length; i++) {
-        console.log("Tweet: " + (i + 1) + " ");
         console.log("Posted at: " + tweets[i].created_at);
         console.log("Tweet text: " + tweets[i].text);
         console.log("");
@@ -35,7 +28,49 @@ function getTweets() {
     });
 };
 
-getTweets();
+
+
+
+if (command === "my-tweets") {
+    console.log(`Getting tweets...`);
+    getTweets();
+    
+} else {
+    console.log(`That's not a valid command...`);
+       
+}
+
+
+
+
+
+
+
+// switch (command === "my-tweets") {
+//     case getTweets:
+//         console.log('Getting tweets...');
+        
+//         getTweets();
+//         break;
+
+    // case spotifyGetSong:
+    //     console.log('Getting songs...')
+
+    //     break;
+
+    // case omdbGetMovie:
+    //     console.log('Getting movie...')
+
+    //     break;
+
+
+//     default:
+//         console.log('Something broke...');
+        
+//         break;
+// }
+
+
 
 
 
