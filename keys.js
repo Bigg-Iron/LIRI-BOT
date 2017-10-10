@@ -1,15 +1,12 @@
 // Twitter
 var Twitter = require('twitter');
 
-var params = {
-    screen_name: 'StellerzJay'
-};
 
 var twitterKeys = {
-    consumer_key: 'A1n9ZcljEk0gF2ZIMX5JAKAx8',
-    consumer_secret: 'nGCcAUihEpDWaL1EJBIJIRrQY5lx33kHs2WfG30PW4iXjSABJN',
-    access_token_key: 'stellarzJay',
-    access_token_secret: '916058092743229440'
+    consumer_key: 'MzDadiSllWfoi9f7HJbtL8ZVr',
+    consumer_secret: 'eUUVc7dd6pwV8CWG2EXMT1dZeQnWy8WRtZWHljqHfvj0Xu19SY',
+    access_token_key: '916058092743229440-IzWPP2tIy1loN9HGGSI1YZ5CM3SczDG',
+    access_token_secret: 'DOevFTH1HQVnKXMEUH1BNQJAqc1hkHunjiUxlTSHCRLC0'
 };
 
 
