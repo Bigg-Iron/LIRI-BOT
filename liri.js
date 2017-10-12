@@ -1,18 +1,18 @@
-var Keys = require("./keys.js");
+var keys = require("./keys.js");
 var Twitter = require("twitter");
-var Request = require("request");
-var Fs = require("fs");
-var Util = require("util");
+var request = require("request");
+var fs = require("fs");
+var util = require("util");
 
 
-var twitterClient = new Twitter(Keys.twitterKeys);
+var twitterClient = new Twitter(keys.twitterKeys);
 
 var command = process.argv[2];
 
-
+// Get Tweet function
 function getTweets() {
   twitterClient.get(
-    'statuses/user_timeline', { screen_name: "stellerzJay", count: 3 },
+    'statuses/user_timeline', { screen_name: "stellerzJay", count: 5 },
     function(error, tweets, response) {
       if (error) {
       	console.log('Something broke...');
@@ -32,7 +32,6 @@ function getTweets() {
 
 
 
-
 if (command === "my-tweets") {
     util.log(`Getting tweets...`);
     getTweets();
@@ -46,31 +45,29 @@ if (command === "my-tweets") {
 
 
 
+switch (command) {
+    case 'my-tweets':
+        util.log(`Getting tweets...`);  
+        getTweets();
+
+        break;
+
+    case 'getSpotifySongs':
+        console.log('Getting songs...')
+
+        break;
+
+    case 'omdbGetMovie':
+        console.log('Getting movie...')
+
+        break;
 
 
-// switch (command === "my-tweets") {
-//     case getTweets:
-//         console.log('Getting tweets...');
+    default:
+        console.log('Something broke...');
         
-//         getTweets();
-//         break;
-
-    // case spotifyGetSong:
-    //     console.log('Getting songs...')
-
-    //     break;
-
-    // case omdbGetMovie:
-    //     console.log('Getting movie...')
-
-    //     break;
-
-
-//     default:
-//         console.log('Something broke...');
-        
-//         break;
-// }
+        break;
+}
 
 
 
