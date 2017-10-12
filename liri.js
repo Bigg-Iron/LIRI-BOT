@@ -1,17 +1,23 @@
 var keys = require("./keys.js");
 var Twitter = require("twitter");
+var Spotify = require('node-spotify-api');
 var request = require("request");
 var fs = require("fs");
 var util = require("util");
 
 
-var twitterClient = new Twitter(keys.twitterKeys);
 
 var command = process.argv[2];
 
+
+
+
+
+var twitter = new Twitter(keys.twitterKeys);
+
 // Get Tweet function
 function getTweets() {
-  twitterClient.get(
+  twitter.get(
     'statuses/user_timeline', { screen_name: "stellerzJay", count: 5 },
     function(error, tweets, response) {
       if (error) {
@@ -31,17 +37,38 @@ function getTweets() {
 
 
 
+var spotify = new Spotify(keys.spotifyKeys);
 
-if (command === "my-tweets") {
-    util.log(`Getting tweets...`);
-    getTweets();
+// Get Spotify songs function
+function getSpotifySong(title) {
+    if (title === undefined || title === null) {
+        title = 'The Sign';
+    }
+
+    spotify
+    .search({ type: 'track', query: title })
+    .then(function(response) {
+      console.log(response);
+    })
+    .catch(function(err) {
+      console.log(err);
+    });
+};
+
+
+
+
+// Get movies from OMDB API function 
+function getMovie() {
     
-} else {
-    console.log(`That's not a valid command...`);
-       
+
 }
 
+// Get text from random.txt and pass it as a command to liri, function
+function doWhatItSays() {
 
+
+}
 
 
 
@@ -52,8 +79,9 @@ switch (command) {
 
         break;
 
-    case 'getSpotifySongs':
+    case 'spotify-this-song':
         console.log('Getting songs...')
+        getSpotifySong();
 
         break;
 
@@ -62,9 +90,13 @@ switch (command) {
 
         break;
 
+    case 'do-what-it-says':
+        console.log('Getting text from random.txt ...');
+        
+        break;
 
     default:
-        console.log('Something broke...');
+        console.log('Please enter a valid command');
         
         break;
 }

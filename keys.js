@@ -10,7 +10,7 @@ var twitterKeys = {
 
 
 // Spotify web API
-var SpotifyApi = require('node-spotify-api')
+var SpotifyApi = require('node-spotify-api');
 
 var spotifyKeys = {
   clientId: '99e04a250d784566a398e0638e5d2770',
@@ -27,6 +27,7 @@ module.exports = {
   // Spotify keys:
   spotifyKeys: spotifyKeys
   // OMDB keys:
+  // API key: 40e9cece
 
 };
 
