@@ -12,7 +12,7 @@ var command = process.argv[2];
 
 
 
-
+// Twitter --------------------------------------------------------------------
 var twitter = new Twitter(keys.twitterKeys);
 
 // Get Tweet function
@@ -36,7 +36,7 @@ function getTweets() {
 };
 
 
-// This function works in the spootify file but not here -- It also broke the rest of the code...
+// Spotify -----------------------------------------------------------------------
 var spotify = new Spotify(keys.spotifyKeys);
 
 // Get Spotify songs function
@@ -46,13 +46,26 @@ function getSpotifySong(title) {
     };
 
     spotify
-    .search({ type: 'track', query: title })
+    .search({ type: 'track', query: title, limit: 1 })
     .then(function(response) {
-        var firstTrack = response.tracks.items[0];
-        var firstArtist = firstTrack.album.artists[0].name;
 
 
-      console.log(JSON.stringify(response.tracks, null, 2));
+        // console.log(response);
+        
+        console.log(`#######################################################
+
+        Song: ${title} 
+        
+        Artist: ${response.tracks.items[0].album.artists[0].name}
+        
+        Album: ${response.tracks.items[0].album.name}
+
+        Preview URL: ${response.tracks.items[0].preview_url}
+        `);
+        
+
+        
+
     })
     .catch(function(err) {
       console.log(err);
@@ -84,23 +97,23 @@ switch (command) {
         break;
 
     case 'spotify-this-song':
-        console.log('Getting songs...')
+        util.log('Getting song...')
         getSpotifySong();
 
         break;
 
     case 'omdbGetMovie':
-        console.log('Getting movie...')
+        util.log('Getting movie...')
 
         break;
 
     case 'do-what-it-says':
-        console.log('Getting text from random.txt ...');
+        util.log('Getting text from random.txt ...');
         
         break;
 
     default:
-        console.log('Please enter a valid command');
+        util.log('Please enter a valid command');
         
         break;
 }
