@@ -28,7 +28,7 @@ function getTweets() {
 
       for (var i = 0; i < tweets.length; i++) {
         console.log("Posted at: " + tweets[i].created_at);
-        console.log("Tweet text: " + tweets[i].text);
+        console.log("Tweet: " + tweets[i].text);
         console.log("");
       }
 
@@ -36,19 +36,23 @@ function getTweets() {
 };
 
 
-
+// This function works in the spootify file but not here -- It also broke the rest of the code...
 var spotify = new Spotify(keys.spotifyKeys);
 
 // Get Spotify songs function
 function getSpotifySong(title) {
     if (title === undefined || title === null) {
         title = 'The Sign';
-    }
+    };
 
     spotify
     .search({ type: 'track', query: title })
     .then(function(response) {
-      console.log(response);
+        var firstTrack = response.tracks.items[0];
+        var firstArtist = firstTrack.album.artists[0].name;
+
+
+      console.log(JSON.stringify(response.tracks, null, 2));
     })
     .catch(function(err) {
       console.log(err);

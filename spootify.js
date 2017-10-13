@@ -8,7 +8,9 @@ var spotify = new Spotify({
 spotify
  .search({ type: 'track', query: 'The Sign', limit: 5 })
  .then(function(response) {
+    //  How do I extract the correct data from the response? Like the artist, album, and song name? 
    console.log(response);
+
  })
  .catch(function(err) {
    console.log(err);

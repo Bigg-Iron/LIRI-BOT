@@ -13,8 +13,8 @@ var twitterKeys = {
 var SpotifyApi = require('node-spotify-api');
 
 var spotifyKeys = {
-  clientId: '99e04a250d784566a398e0638e5d2770',
-  clientSecret: 'dd9984c666ac4b139cd98c5d9c2bd8f7'
+  id: '99e04a250d784566a398e0638e5d2770',
+  secret: 'dd9984c666ac4b139cd98c5d9c2bd8f7'
 
 };
 
