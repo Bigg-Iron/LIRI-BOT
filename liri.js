@@ -11,7 +11,6 @@ var command = process.argv[2];
 
 
 
-
 // Twitter --------------------------------------------------------------------
 var twitter = new Twitter(keys.twitterKeys);
 
@@ -37,16 +36,17 @@ function getTweets() {
 
 
 // Spotify -----------------------------------------------------------------------
+var song = process.argv[3];
 var spotify = new Spotify(keys.spotifyKeys);
 
 // Get Spotify songs function
-function getSpotifySong(title) {
-    if (title === undefined || title === null) {
-        title = 'The Sign';
+function getSpotifySong(song) {
+    if (song === undefined || song === null) {
+        song = 'The Sign';
     };
 
     spotify
-    .search({ type: 'track', query: title, limit: 1 })
+    .search({ type: 'track', query: song, limit: 1 })
     .then(function(response) {
 
 
@@ -54,7 +54,7 @@ function getSpotifySong(title) {
         
         console.log(`#######################################################
 
-        Song: ${title} 
+        Song: ${song} 
         
         Artist: ${response.tracks.items[0].album.artists[0].name}
         
@@ -97,7 +97,7 @@ switch (command) {
         break;
 
     case 'spotify-this-song':
-        util.log('Getting song...')
+        util.log('Getting song . . .')
         getSpotifySong();
 
         break;
