@@ -40,11 +40,11 @@ function getTweets() {
 // Spotify -----------------------------------------------------------------------
 if (process.argv[4] === undefined || process.argv[4] === null) {
     var song = process.argv[3];
-    console.log(song);    
+    // console.log(song);
 
 } else if (process.argv[4] !== undefined || process.argv[4] !== null) {
     var song = process.argv[3] + ' ' + process.argv[4];
-    console.log(song);
+    // console.log(song);
     
 } else {
     console.log('Please enter a valid song');
@@ -65,9 +65,6 @@ function getSpotifySong(song) {
     spotify
     .search({ type: 'track', query: song, limit: 1 })
     .then(function(response) {
-
-
-        // console.log(response);
         
         console.log(`#######################################################
 
@@ -90,11 +87,37 @@ function getSpotifySong(song) {
 
 
 
+// OMDB ------------------------------------------------------------------------------
+
 // Get movies from OMDB API function 
-function getMovie() {
-    
+function getMovie(movie) {
+    if (movie === undefined || movie === null) {
+        movie = "Mr Nobody";
+    }
+    var requestUrl = "https://www.omdbapi.com/?t=" + movie + "&y=&plot=short&apikey=" + keys.omdbapiKey.apiKey;
+    request.get({ url: requestUrl }, function (error, response, body) {
+
+        body = JSON.parse(body);
+        if (error || body.Response === "False" || body.Error === "Movie not found!") {
+            console.log("movie not found");
+            return;
+        }
+
+        console.log("Year of release: " + body.Year);
+        console.log("IMDB Rating: " + body.imdbRating);
+        for (var i = 0; i < body.Ratings.length; i++) {
+            if (body.Ratings[i].Source === "Rotten Tomatoes") {
+                console.log("Rotten Tomatoes Rating: " + body.Ratings[i].Value);
+            }
+        }
+        console.log("Country of production: " + body.Country);
+        console.log("Language of movie: " + body.Language);
+        console.log("Plot: " + body.Plot);
+        console.log("Actors: " + body.Actors);
+    });
 
 }
+
 
 // Get text from random.txt and pass it as a command to liri, function
 function doWhatItSays() {
@@ -119,6 +142,8 @@ switch (command) {
 
     case 'omdbGetMovie':
         util.log('Getting movie . . .')
+        var movie = process.argv[3];
+        getMovie(movie);
 
         break;
 

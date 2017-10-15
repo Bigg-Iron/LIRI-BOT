@@ -20,7 +20,9 @@ var spotifyKeys = {
 
 
 // OMDB API
-
+var omdbapiKey = {
+	apiKey:"40e9cece"
+};
 
 
 
@@ -29,9 +31,9 @@ module.exports = {
   // Twitter keys
   twitterKeys: twitterKeys,
   // Spotify keys:
-  spotifyKeys: spotifyKeys
-  // OMDB keys:
-  // API key: 40e9cece
+  spotifyKeys: spotifyKeys,
+  // OMDB key:
+  omdbapiKey: omdbapiKey
 
 };
 
