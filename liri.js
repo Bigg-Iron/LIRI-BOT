@@ -26,6 +26,8 @@ function getTweets() {
       }
 
       for (var i = 0; i < tweets.length; i++) {
+        console.log(`####################################################### `);
+
         console.log("Posted at: " + tweets[i].created_at);
         console.log("Tweet: " + tweets[i].text);
         console.log("");
@@ -36,14 +38,29 @@ function getTweets() {
 
 
 // Spotify -----------------------------------------------------------------------
-var song = process.argv[3];
+if (process.argv[4] === undefined || process.argv[4] === null) {
+    var song = process.argv[3];
+    console.log(song);    
+
+} else if (process.argv[4] !== undefined || process.argv[4] !== null) {
+    var song = process.argv[3] + ' ' + process.argv[4];
+    console.log(song);
+    
+} else {
+    console.log('Please enter a valid song');
+    
+}
+
+
 var spotify = new Spotify(keys.spotifyKeys);
 
 // Get Spotify songs function
 function getSpotifySong(song) {
     if (song === undefined || song === null) {
         song = 'The Sign';
-    };
+    } else {
+        
+    }
 
     spotify
     .search({ type: 'track', query: song, limit: 1 })
@@ -60,11 +77,9 @@ function getSpotifySong(song) {
         
         Album: ${response.tracks.items[0].album.name}
 
-        Preview URL: ${response.tracks.items[0].preview_url}
-        `);
+        Preview URL: ${response.tracks.items[0].preview_url} `);
         
 
-        
 
     })
     .catch(function(err) {
@@ -91,24 +106,24 @@ function doWhatItSays() {
 
 switch (command) {
     case 'my-tweets':
-        util.log(`Getting tweets...`);  
+        util.log(`Getting tweets. . .`);  
         getTweets();
 
         break;
 
     case 'spotify-this-song':
         util.log('Getting song . . .')
-        getSpotifySong();
+        getSpotifySong(song);
 
         break;
 
     case 'omdbGetMovie':
-        util.log('Getting movie...')
+        util.log('Getting movie . . .')
 
         break;
 
     case 'do-what-it-says':
-        util.log('Getting text from random.txt ...');
+        util.log('Getting text from random.txt . . .');
         
         break;
 
@@ -117,8 +132,6 @@ switch (command) {
         
         break;
 }
-
-
 
 
 
