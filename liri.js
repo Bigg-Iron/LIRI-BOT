@@ -121,9 +121,16 @@ function getMovie(movie) {
 
 // Get text from random.txt and pass it as a command to liri, function
 function doWhatItSays() {
+    fs.readFile('./random.txt', (err, data) => {
+        if (err) throw err;
+        console.log(data);
+        
+      });
+    
 
+    }
+    
 
-}
 
 
 
@@ -149,6 +156,7 @@ switch (command) {
 
     case 'do-what-it-says':
         util.log('Getting text from random.txt . . .');
+        doWhatItSays(data);
         
         break;
 
